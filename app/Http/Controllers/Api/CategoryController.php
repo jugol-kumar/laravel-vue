@@ -21,9 +21,6 @@ class CategoryController extends Controller
             'name' => 'required|max:30|min:1|unique:categories',
             'photo' => 'required',
         ]);
-
-
-
         $photo = $request->photo;
         $position = strpos($photo, ';');
         $subString = substr($photo, 0,$position);
@@ -31,11 +28,7 @@ class CategoryController extends Controller
         $imageName = time().rand(0000,9999).'.'.$imageExt;
         $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
         Storage::put("public/category/$imageName", $resize->__toString());
-
-
         $uploadPath = "storage/category/$imageName";
-
-
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
         $data['photo'] = $uploadPath;
