@@ -2991,13 +2991,13 @@ __webpack_require__.r(__webpack_exports__);
         showCancelButton: true
       }).then(function (result) {
         if (result.value) {
-          axios["delete"]('/api/employee/' + id).then(function (res) {
+          axios["delete"]('/api/customer/' + id).then(function (res) {
             Toast.fire({
               icon: 'success',
               title: res.data.message
             });
 
-            _this2.allEmployee();
+            _this2.allCustomer();
           })["catch"](function (err) {
             console.log(err.response.data);
           });

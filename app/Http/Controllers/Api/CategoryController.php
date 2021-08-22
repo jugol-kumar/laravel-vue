@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         return response()->json(Category::all());
     }
-    
+
     public function store(Request $request)
     {
         $this->validate($request, [

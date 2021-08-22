@@ -183,13 +183,13 @@ export default {
                 showCancelButton:true,
             }).then((result) => {
                 if (result.value){
-                    axios.delete('/api/employee/'+id)
+                    axios.delete('/api/customer/'+id)
                         .then(res => {
                             Toast.fire({
                                 icon: 'success',
                                 title: res.data.message
                             })
-                            this.allEmployee();
+                            this.allCustomer();
                         })
                         .catch(err => {
                             console.log(err.response.data)
