@@ -15,6 +15,7 @@ class CategoryController extends Controller
     {
         return response()->json(Category::all());
     }
+    
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -28,17 +29,21 @@ class CategoryController extends Controller
         $imageName = time().rand(0000,9999).'.'.$imageExt;
         $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
         Storage::put("public/category/$imageName", $resize->__toString());
+
         $uploadPath = "storage/category/$imageName";
+
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
         $data['photo'] = $uploadPath;
         Category::create($data);
         return response()->json(['message' => 'Category save successfully done.'], 200);
     }
+
     public function show(Category $category)
     {
         return response()->json($category);
     }
+
     public function update(Request $request, Category $category)
     {
         $this->validate($request, [
@@ -49,6 +54,7 @@ class CategoryController extends Controller
         $category->update($data);
         return response()->json(['message' => 'Category save successfully done.'], 200);
     }
+
     public function destroy(Category $category)
     {
         $category->delete();
