@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class EmployeeController extends Controller
@@ -16,15 +17,25 @@ class EmployeeController extends Controller
     }
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|max:30|min:1',
+            'email' => 'required|unique:employees',
+            'phone' => 'required|unique:employees',
+            'position' => 'required',
+        ]);
+
         if ($request->photo){
             $photo = $request->photo;
             $position = strpos($photo, ';');
             $subString = substr($photo, 0,$position);
             $imageExt = explode( '/',$subString )[1];
             $imageName = time().rand(0000,9999).'.'.$imageExt;
+            $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
+            Storage::put("public/employee/$imageName", $resize->__toString());
 
-            $uploadUrl = 'backend/employee/'.$imageName;
-            Image::make($photo)->resize(1920,1080)->save($uploadUrl);
+
+            $uploadPath = "storage/employee/$imageName";
 
             Employee::create([
                 'name' => $request->name,
@@ -32,7 +43,7 @@ class EmployeeController extends Controller
                 'phone' => $request->phone,
                 'position' => $request->position,
                 'address' => $request->address,
-                'photo' => $uploadUrl,
+                'photo' => $uploadPath,
             ]);
             return response()->json(['message' =>'Employee save with image'], 200);
         }else{
@@ -41,8 +52,9 @@ class EmployeeController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'position' => $request->position,
+                $userImage = ['user.svg', 'default.png'],
                 'address' => $request->address,
-                'photo' => 'default.png'
+                'photo' => 'storage/employee/'.$userImage[array_rand($userImage, 1)],
             ]);
             return response()->json(['message' =>'Employee save without image'], 200);
         }

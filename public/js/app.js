@@ -2621,7 +2621,7 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         phone: '',
         address: '',
-        photo: ''
+        photo: null
       },
       errors: {}
     };
@@ -2942,6 +2942,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ManageEmployee",
   data: function data() {
@@ -3088,6 +3094,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AddEmployee",
   data: function data() {
@@ -3098,8 +3106,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: '',
         position: '',
         address: '',
-        photo: null,
-        file: []
+        photo: null
       },
       errors: {}
     };
@@ -3109,7 +3116,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var File = event.target.files[0];
-      this.from.file = File;
       var reader = new FileReader();
 
       reader.onload = function (event) {
@@ -3285,6 +3291,7 @@ __webpack_require__.r(__webpack_exports__);
     var id = this.$route.params.id;
     axios.get('/api/employee/' + id).then(function (res) {
       _this3.from = res.data;
+      console.log(res.data);
     })["catch"](function (err) {
       console.log(err.response.data);
     });
@@ -3304,6 +3311,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -35648,6 +35661,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("img", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.from.photo,
+                  expression: "from.photo"
+                }
+              ],
               staticStyle: { width: "180px", height: "120px" },
               attrs: { src: _vm.from.photo, alt: "" }
             })
@@ -36027,6 +36048,16 @@ var render = function() {
                 return _c("tr", [
                   _c("td", [_vm._v(_vm._s(i + 1))]),
                   _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "symbol-label" }, [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        staticStyle: { width: "50px", height: "50px" },
+                        attrs: { src: "" + emp.photo, alt: "" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(emp.email))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(emp.name))]),
@@ -36289,6 +36320,8 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Record ID")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Avatar")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
@@ -36536,6 +36569,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("img", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.from.photo,
+                  expression: "from.photo"
+                }
+              ],
               staticStyle: { width: "180px", height: "120px" },
               attrs: { src: _vm.from.photo, alt: "" }
             })
@@ -36812,7 +36853,7 @@ var render = function() {
             _vm._v(" "),
             _c("img", {
               staticStyle: { width: "180px", height: "120px" },
-              attrs: { src: _vm.from.photo, alt: "" }
+              attrs: { src: "" + _vm.from.photo, alt: "" }
             })
           ]),
           _vm._v(" "),
@@ -37039,6 +37080,16 @@ var render = function() {
               _vm._l(_vm.employes, function(emp, i) {
                 return _c("tr", [
                   _c("td", [_vm._v(_vm._s(i + 1))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "symbol-label" }, [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        staticStyle: { width: "50px", height: "50px" },
+                        attrs: { src: "" + emp.photo, alt: "" }
+                      })
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(emp.email))]),
                   _vm._v(" "),
@@ -37303,6 +37354,8 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Record ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Employee Avatar")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),

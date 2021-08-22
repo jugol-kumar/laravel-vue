@@ -44,7 +44,7 @@
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="from.photo" alt="" style="width: 180px;height: 120px;">
+                    <img :src="`${ from.photo }`" alt="" style="width: 180px;height: 120px;">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -117,6 +117,7 @@ export default {
         axios.get('/api/employee/'+id)
         .then(res => {
             this.from = res.data;
+            console.log(res.data)
         })
         .catch(err => {
             console.log(err.response.data)

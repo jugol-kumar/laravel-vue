@@ -94,6 +94,7 @@
                     <thead>
                         <tr>
                         <th>Record ID</th>
+                        <th>Employee Avatar</th>
                         <th>Email</th>
                         <th>Name</th>
                         <th>Phone</th>
@@ -104,6 +105,11 @@
                     <tbody>
                         <tr v-for="(emp, i) in employes">
                             <td>{{ i+1 }}</td>
+                            <td>
+                                <span class="symbol-label">
+                                     <img :src="`${emp.photo}`" alt="" class="rounded-circle" style="width: 50px; height: 50px;">
+                                </span>
+                            </td>
                             <td>{{ emp.email }}</td>
                             <td>{{ emp.name }}</td>
                             <td>{{ emp.phone }}</td>
