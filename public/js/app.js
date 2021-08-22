@@ -2477,6 +2477,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
   data: function data() {
@@ -35217,6 +35223,16 @@ var render = function() {
                 return _c("tr", [
                   _c("td", [_vm._v(_vm._s(i + 1))]),
                   _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "symbol-label" }, [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        staticStyle: { width: "50px", height: "50px" },
+                        attrs: { src: "" + cat.photo, alt: "" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(cat.name))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(cat.description))]),
@@ -35476,6 +35492,8 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Record ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Image")]),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),

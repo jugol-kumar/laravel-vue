@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3b7f4c-b5da-4bc5-a914-9768a7c62306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/storage/customers/default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/customers/user.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_08_15_160121_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_08_15_160121_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/customer/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/customer/Add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/customer/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/customer/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/AddEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/AddEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/EditEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/EditEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/category/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/category/Index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +175,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629645854155</updated>
-      <workItem from="1629645858578" duration="14641000" />
+      <workItem from="1629645858578" duration="14948000" />
     </task>
     <servers />
   </component>

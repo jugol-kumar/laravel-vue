@@ -94,6 +94,7 @@
                     <thead>
                         <tr>
                         <th>Record ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -102,6 +103,11 @@
                     <tbody>
                         <tr v-for="(cat, i) in categories">
                             <td>{{ i+1 }}</td>
+                            <td>
+                                <span class="symbol-label">
+                                     <img :src="`${cat.photo}`" alt="" class="rounded-circle" style="width: 50px; height: 50px;">
+                                </span>
+                            </td>
                             <td>{{ cat.name }}</td>
                             <td>{{ cat.description }}</td>
                             <td>
