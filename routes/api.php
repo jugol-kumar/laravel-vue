@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\PosController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Api\SupplierController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,3 +63,22 @@ Route::get('/month-salaries/{id}',    [SalaryController::class, 'monthSalary']);
 
 
 Route::get('/product-by-category-id/{id}', [ProductController::class, 'productByCategory']);
+
+Route::post('/upload',function(Request $request){
+    $uploadedFiles=$request->pics;
+    foreach ($uploadedFiles as $file){
+        $file->store('dummy');
+
+    }
+    return response(['status'=>'success'],200);
+
+});
+
+Route::post('/upload-single',function(Request $request){
+
+    return $request;
+
+    $files = $request->image;
+    $files->store('single');
+    return response(['status'=>'success'],200);
+});

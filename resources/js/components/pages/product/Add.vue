@@ -94,7 +94,7 @@
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="from.photo" alt="" style="width: 180px;height: 120px;">
+                    <img v-show="from.showImg" :src="from.showImg" alt="" style="width: 180px;height: 120px;">
                     <span @click="deleteImage()" class="deleteImage" v-show="from.photo">x</span>
                 </div>
                 <div class="card-footer">
@@ -105,7 +105,6 @@
             <!--end::Form-->
         </div>
 
-
     </div>
 </template>
 
@@ -114,6 +113,8 @@ export default {
     name: "Add",
     data(){
         return{
+            // from: new FormData,
+
             from: {
                 title: '',
                 summary: '',
@@ -126,6 +127,7 @@ export default {
                 root:'',
                 buying_price:'',
                 selling_price:'',
+                showImg:'',
             },
             errors:{},
             categories:{},
@@ -134,15 +136,31 @@ export default {
     },
     methods: {
         uploadFile(event){
-            let File = event.target.files[0];
+             this.from.photo = event.target.files[0];
+
             let reader = new FileReader();
             reader.onload = event => {
-                this.from.photo = event.target.result
+                this.from.showImg = event.target.result
             }
-            reader.readAsDataURL(File);
+            reader.readAsDataURL(this.from.photo);
         },
         saveProduct(){
-            axios.post('api/product', this.from)
+            var fromData = new FormData;
+
+            fromData.append('title', this.from.title)
+            fromData.append('summary', this.from.summary)
+            fromData.append('description', this.from.description)
+            fromData.append('stock', this.from.stock)
+            fromData.append('brand_id', this.from.brand_id)
+            fromData.append('cat_id', this.from.cat_id)
+            fromData.append('supplier_id', this.from.supplier_id)
+            fromData.append('photo', this.from.photo)
+            fromData.append('root', this.from.root)
+            fromData.append('buying_price', this.from.buying_price)
+            fromData.append('selling_price', this.from.selling_price)
+
+
+            axios.post('api/product', fromData)
             .then( res => {
                 this.from= '';
                 this.errors = '';
@@ -160,7 +178,7 @@ export default {
             })
         },
         deleteImage(){
-            this.from.photo = ''
+            this.from.showImg = ''
         },
         allCategory(){
             axios.get('/api/category')
@@ -216,3 +234,7 @@ export default {
     background: #000;
 }
 </style>
+
+
+
+

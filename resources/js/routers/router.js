@@ -41,6 +41,11 @@ import Pos from '../components/pages/pos/Index'
 import TodayOrder from "../components/pages/order/TodayOrder";
 import SearchOrder from "../components/pages/order/SearchOrder";
 
+import FileUpload from '../components/pages/uploadfile/UploadFile';
+
+import Dropzone from '../components/pages/media/Dropzone';
+
+
 export default new VueRouter({
     mode:'history',
     routes:[
@@ -206,6 +211,23 @@ export default new VueRouter({
             name:'SearchOrder',
             component: SearchOrder
         },
+
+        //upload multiple files
+        {
+            path:'/upload-multiple-file',
+            name:'FileUpload',
+            component: FileUpload
+        },
+
+        //media route
+        {
+            path:'/dropzone',
+            name:'DropZone',
+            component: Dropzone
+        },
+
+
+
 
 
     ]

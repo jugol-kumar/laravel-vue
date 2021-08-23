@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,6 +16,13 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
+//        return $request;
+        $file = $request->photo;
+        $file->store('productphoto');
+
+//        return $request;
+//        exit();
+
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
         Product::create($data);
