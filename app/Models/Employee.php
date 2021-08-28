@@ -11,7 +11,7 @@ class Employee extends Model
 
     protected $guarded = ['id'];
 
-//    public function salaries(){
-//        return $this->hasMany(Salary::class);
-//    }
+    public function salaries(){
+        return $this->hasMany(Salary::class, 'emp_id');
+    }
 }

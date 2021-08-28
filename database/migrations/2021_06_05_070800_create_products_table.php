@@ -29,7 +29,8 @@ class CreateProductsTable extends Migration
             $table->float('discount')->default(0);
             $table->string('size')->default(0);
             $table->enum('status',['active','inactive']);
-            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
+//            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
+            $table->foreignId('supplier_id');
             $table->timestamps();
         });
     }

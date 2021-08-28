@@ -22,7 +22,7 @@
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="from.photo" alt="" style="width: 180px;height: 120px;">
+                    <img v-if="from.photo" :src="from.photo" alt="" style="width: 180px;height: 120px;">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -46,12 +46,14 @@ export default {
                 description: '',
                 photo:'',
             },
+            avatar:{},
             errors:{},
         }
     },
     methods: {
         uploadFile(event){
             let File = event.target.files[0];
+            this.avatar = File;
             let reader = new FileReader();
             reader.onload = event => {
                 this.from.photo = event.target.result
@@ -59,7 +61,13 @@ export default {
             reader.readAsDataURL(File);
         },
         saveCategory(){
-            axios.post('api/category', this.from)
+            let formdata = new FormData;
+            formdata.append('image', this.avatar);
+            formdata.append('name', this.from.name)
+            formdata.append('description', this.from.description)
+            formdata.append('photo', this.from.photo)
+
+            axios.post('api/category', formdata)
             .then( res => {
                 this.from= '';
                 this.errors = '';

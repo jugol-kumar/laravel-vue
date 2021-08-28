@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import moment from 'moment'
 Vue.use(moment)
+
 Vue.filter('dateFormat', function (value){
     if (value){
         return moment(String(value)).format("MMM Do YY");

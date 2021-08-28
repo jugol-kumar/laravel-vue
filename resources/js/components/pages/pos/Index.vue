@@ -6,7 +6,7 @@
                     <div class="card card-custom" style="width: 100%">
                         <div class="card-header flex-wrap py-5">
                             <div class="card-title">
-                                <h3 class="card-label">All Employee
+                                <h3 class="card-label">Product Carts
                                     <span class="d-block text-muted pt-2 font-size-sm">all employees details is here</span>
                                 </h3>
                             </div>
@@ -41,7 +41,7 @@
                                 <tbody>
                                 <tr v-for="(product, i) in CartProducts">
                                     <td>{{ i+1 }}</td>
-                                    <td><router-link to="">{{ product.title }}</router-link></td>
+                                    <td><a href="#" @click="showSingleProduct(product.product_id)">{{ product.title }}</a></td>
                                     <td>{{ product.quantity }}
                                         <a href="javascript:;" @click="quentityIncrement(product.id)" class="btn btn-sm btn-clean btn-icon" title="Delete">
                                             <span class="svg-icon svg-icon-md">
@@ -151,16 +151,15 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
+
+
             <div class="col-md-6">
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
-                            <h3 class="card-label">All Employee
-                                <span class="d-block text-muted pt-2 font-size-sm">all employees details is here</span>
+                            <h3 class="card-label">All Products
+                                <span class="d-block text-muted pt-2 font-size-sm">all products with product details</span>
                             </h3>
                         </div>
                     </div>
@@ -186,32 +185,47 @@
                                     </a>
                                 </li>
                             </ul>
+
                             <div class="tab-content mt-5" id="myTabContent1">
                                 <div class="tab-pane fade show active" id="home-1" role="tabpanel" aria-labelledby="home-tab-1">
                                     <div class="row">
-                                        <div class="col-md-3 mt-2" v-for="(product, i) in products">
-                                            <router-link to="" >
-                                                <div class="card"@dblclick="addToPos(product.id)">
-                                                    <div class="card-body">
-                                                        <small>{{ product.title }}</small>
+                                        <div class="col-md-4 mt-2" v-for="(product, i) in products" @dblclick="doubleClick(product.id)" @click="singleClick(product.id)">
+                                            <router-link to="">
+                                                <div class="card-sl">
+                                                    <div class="card-image">
+                                                        <img :src="`${product.photo}`" />
                                                     </div>
+                                                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                                    <div class="card-heading">
+                                                        {{ product.title }}
+                                                    </div>
+                                                    <div class="card-text">
+                                                        $67,400
+                                                    </div>
+                                                    <a href="#" class="card-button" @click="doubleClick(product.id)"> Purchase</a>
                                                 </div>
                                             </router-link>
-
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
                                     <div class="row">
-                                        <div class="col-md-3 mt-2" v-for="(product, i) in categoryProducts">
+                                        <div class="col-md-4 mt-2" v-for="(product, i) in categoryProducts" @dblclick="doubleClick(product.id)" @click="singleClick(product.id)">
                                             <router-link to="">
-                                                <div class="card"@dblclick="addToPos(product.id)">
-                                                    <div class="card-body">
-                                                        <small>{{ product.title }}</small>
+                                                <div class="card-sl">
+                                                    <div class="card-image">
+                                                        <img :src="`${product.photo}`" />
                                                     </div>
+                                                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                                    <div class="card-heading">
+                                                        {{ product.title }}
+                                                    </div>
+                                                    <div class="card-text">
+                                                        $67,400
+                                                    </div>
+                                                    <a href="#" class="card-button" @click="doubleClick(product.id)"> Purchase</a>
                                                 </div>
                                             </router-link>
-
                                         </div>
                                     </div>
                                 </div>
@@ -221,10 +235,91 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg ml-8" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Product Preview</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <!--begin::Section-->
+                        <!--begin::Engage Widget 13-->
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b">
+                            <!--begin::Card Body-->
+                            <!--                            bg-danger-->
+                            <div
+                                class="card-body d-flex rounded  p-12 flex-column flex-md-row flex-lg-column flex-xxl-row">
+                                <!--begin::Image-->
+                                <div
+                                    class="bgi-no-repeat bgi-position-center bgi-size-cover h-300px h-md-auto h-lg-300px h-xxl-auto mw-100 w-550px m-auto"
+                                    :style="{ backgroundImage: `url(${product.photo})` } "
+                                ></div>
+                                <!--end::Image-->
+                                <!--begin::Card-->
+                                <div class="card card-custom w-auto w-md-300px w-lg-auto w-xxl-300px ml-auto">
+                                    <!--begin::Card Body-->
+                                    <div class="card-body px-12 py-10">
+                                        <h3 class="font-weight-bolder font-size-h2 mb-1">
+                                            <a href="#" class="text-dark-75">{{ product.title }}</a>
+                                        </h3>
+                                        <div class="text-primary font-size-h4 mb-9">Sealing Price: {{ product.selling_price }} Tk</div>
+                                        <div class="font-size-sm mb-8">Outlines keep you honest. They stop you from
+                                            indulging in poorly ought out metaphorsy about driving and keep you focused
+                                            one the overall structure of your post
+                                        </div>
+                                        <!--begin::Info-->
+                                        <div class="d-flex mb-3">
+                                            <span class="text-dark-50 flex-root font-weight-bold">Shoes Brand</span>
+                                            <span class="text-dark flex-root font-weight-bold">Nike</span>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <span class="text-dark-50 flex-root font-weight-bold">SKU</span>
+                                            <span class="text-dark flex-root font-weight-bold">NF3535</span>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <span class="text-dark-50 flex-root font-weight-bold">Color</span>
+                                            <span class="text-dark flex-root font-weight-bold">White</span>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <span class="text-dark-50 flex-root font-weight-bold">Collection</span>
+                                            <span class="text-dark flex-root font-weight-bold">2020 Spring</span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="text-dark-50 flex-root font-weight-bold">In Stock</span>
+                                            <span class="text-dark flex-root font-weight-bold">280</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <!--end::Card Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end::Card Body-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 
 <script>
+let time = null;
 export default {
     name: "ManageEmployee",
     data() {
@@ -244,6 +339,7 @@ export default {
             categories: {},
             categoryProducts: {},
             CartProducts:{},
+            product:{},
         }
     },
     methods: {
@@ -300,6 +396,7 @@ export default {
                 })
             })
         },
+
         addToPos(id){
             axios.post('api/pos', {id})
             .then(res => {
@@ -317,6 +414,7 @@ export default {
                 })
             })
         },
+
         allCartProduct(){
             axios.get('api/pos')
                 .then(res => {
@@ -330,6 +428,22 @@ export default {
                     })
                 })
         },
+
+        showSingleProduct(id) {
+            axios.get('/api/product/' + id)
+                .then(res => {
+                    $('#exampleModal').modal('show')
+                    this.product = res.data;
+                })
+                .catch(err => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: err.response.statusText
+                    })
+                })
+
+        },
+
         deleteCartProduct(id){
             Swal.fire({
                 title: 'Are You Sure!',
@@ -423,7 +537,23 @@ export default {
             if (!User.loggedIn()) {
                 this.$router.push({name: "Login"})
             }
-        }
+        },
+
+
+        // first clear  time
+        singleClick(id) {
+         clearTimeout(time);
+        time = setTimeout(() => {
+            this.showSingleProduct(id)
+        }, 300);
+    },
+
+    doubleClick(id) {
+        clearTimeout(time);
+        this.addToPos(id)
+    }
+
+
     },
     computed: {
       totalQty(){
@@ -462,5 +592,95 @@ export default {
 </script>
 
 <style scoped>
+/* Card Styles */
 
+.card-sl {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px 8px 0px 0;
+    min-height:80px;
+}
+
+.card-action {
+    position: relative;
+    float: right;
+    margin-top: -15px;
+    margin-right: 3px;
+    z-index: 2;
+    color: #5cd2e2;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 4px -1px #868b7d66, 0px 0px 1px 0 #fdff90 inset;
+    padding: 5px 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.card-action:hover {
+    color: #fff;
+    background: #ffecc3;
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+.card-heading {
+    font-size: 10px;
+    font-weight: bold;
+    background: #fff;
+    padding: 10px 15px;
+}
+
+.card-text {
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 14px;
+    color: #636262;
+}
+
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+    color: #fff;
+
+}
+
+
+@-webkit-keyframes pulse {
+    0% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+    70% {
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    }
+
+    100% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+}
 </style>

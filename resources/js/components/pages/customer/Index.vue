@@ -3,8 +3,8 @@
         <div class="card card-custom">
             <div class="card-header flex-wrap py-5">
                 <div class="card-title">
-                    <h3 class="card-label">All Employee
-                        <span class="d-block text-muted pt-2 font-size-sm">all employees details is here</span></h3>
+                    <h3 class="card-label">All Customers
+                        <span class="d-block text-muted pt-2 font-size-sm">All customers details is here</span></h3>
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Dropdown-->
@@ -73,7 +73,7 @@
                     </div>
                     <!--end::Dropdown-->
                     <!--begin::Button-->
-                    <router-link :to="{name:'AddEmployee'}" href="#" class="btn btn-primary font-weight-bolder">
+                    <router-link :to="{name:'AddCustomer'}" href="#" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

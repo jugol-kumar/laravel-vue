@@ -65,6 +65,8 @@ export default {
     methods: {
         uploadFile(event){
             let File = event.target.files[0];
+
+
             let reader = new FileReader();
             reader.onload = event => {
                 this.from.photo = event.target.result

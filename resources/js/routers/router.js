@@ -18,6 +18,10 @@ import AddCategory from '../components/pages/category/Add'
 import ManageCategory from '../components/pages/category/Index'
 import EditCategory from '../components/pages/category/Edit'
 
+import AddBrand from '../components/pages/brand/Add'
+import ManageBrand from '../components/pages/brand/Index'
+import EditBrand from '../components/pages/brand/Edit'
+
 import AddProduct from '../components/pages/product/Add'
 import ManageProduct from '../components/pages/product/Index'
 import EditProduct from '../components/pages/product/Edit'
@@ -34,13 +38,14 @@ import AddSalary from '../components/pages/salary/Add'
 import ManageSalary from '../components/pages/salary/Index'
 import MonthSalary from '../components/pages/salary/MonthSalary'
 
-import StokeManage from '../components/pages/product/Stoke'
-
-import Pos from '../components/pages/pos/Index'
 
 import TodayOrder from "../components/pages/order/TodayOrder";
 import SearchOrder from "../components/pages/order/SearchOrder";
+import ShowOrder from "../components/pages/order/ShowOrder";
 
+import StokeManage from '../components/pages/product/Stoke'
+
+import Pos from '../components/pages/pos/Index'
 import FileUpload from '../components/pages/uploadfile/UploadFile';
 
 import Dropzone from '../components/pages/media/Dropzone';
@@ -115,6 +120,23 @@ export default new VueRouter({
             path:'/edit-category/:id',
             name:'EditCategory',
             component: EditCategory
+        },
+
+        //brand routes
+        {
+            path:'/add-brand',
+            name:'AddBrand',
+            component: AddBrand
+        },
+        {
+            path:'/manage-brand',
+            name:'ManageBrand',
+            component: ManageBrand
+        },
+        {
+            path:'/edit-brand/:id',
+            name:'EditBrand',
+            component: EditBrand
         },
 
         //product routes
@@ -211,12 +233,10 @@ export default new VueRouter({
             name:'SearchOrder',
             component: SearchOrder
         },
-
-        //upload multiple files
         {
-            path:'/upload-multiple-file',
-            name:'FileUpload',
-            component: FileUpload
+            path:'/search-order/:id',
+            name:'ShowOrderDetails',
+            component: ShowOrder
         },
 
         //media route
@@ -225,7 +245,11 @@ export default new VueRouter({
             name:'DropZone',
             component: Dropzone
         },
-
+        {
+            path:'/upload-multiple-file',
+            name:'LiveUpload',
+            component: FileUpload
+        },
 
 
 

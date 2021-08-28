@@ -94,6 +94,7 @@
                     <thead>
                         <tr>
                         <th>Record ID</th>
+                        <th>Avatar</th>
                         <th>Email</th>
                         <th>Name</th>
                         <th>Phone</th>
@@ -104,6 +105,7 @@
                     <tbody>
                         <tr v-for="(supp, i) in suppliers">
                             <td>{{ i+1 }}</td>
+                            <th><img :src="`${supp.photo}`" alt="" class="rounded-circle" style="width: 50px; height: 50px;"></th>
                             <td>{{ supp.email }}</td>
                             <td>{{ supp.name }}</td>
                             <td>{{ supp.phone }}</td>

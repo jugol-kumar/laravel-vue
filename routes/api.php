@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\ExpenseController;
+use App\Http\Controllers\Api\MonthController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PosController;
 use App\Http\Controllers\Api\ProductController;
@@ -42,6 +44,8 @@ Route::apiResource('supplier',  SupplierController::class);
 
 Route::apiResource('category',  CategoryController::class);
 
+Route::apiResource('brand',     BrandController::class);
+
 Route::apiResource('product',   ProductController::class);
 
 Route::apiResource('expense',   ExpenseController::class);
@@ -54,15 +58,17 @@ Route::apiResource('pos',       PosController::class);
 
 Route::apiResource('order',     OrderController::class);
 
-Route::delete('/pos/delete-cart/{id}', [PosController::class, 'deleteItem']);
+Route::delete('/pos/delete-cart/{id}',          [PosController::class, 'deleteItem']);
 
-Route::get('/pos/increment-cart-product/{id}', [PosController::class, 'incrementProductQty']);
-Route::get('/pos/decrement-cart-product/{id}', [PosController::class, 'decrementProductQty']);
+Route::get('/pos/increment-cart-product/{id}',  [PosController::class, 'incrementProductQty']);
+Route::get('/pos/decrement-cart-product/{id}',  [PosController::class, 'decrementProductQty']);
 
-Route::get('/month-salaries/{id}',    [SalaryController::class, 'monthSalary']);
+Route::get('/month-salaries/{id}',              [SalaryController::class, 'monthSalary']);
+Route::get('/all-month',                        [MonthController::class, 'index']);
+Route::get('/employee-salary/{id}',             [MonthController::class, 'employeeSalary']);
+Route::get('/product-by-category-id/{id}',      [ProductController::class, 'productByCategory']);
 
 
-Route::get('/product-by-category-id/{id}', [ProductController::class, 'productByCategory']);
 
 Route::post('/upload',function(Request $request){
     $uploadedFiles=$request->pics;

@@ -16,17 +16,26 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-//        return $request;
         $file = $request->photo;
-        $file->store('productphoto');
+        $fileName = time().rand(0000,9999).'.'.$file->getClientOriginalExtension();
+        $file->storeAs('public/productImage/',$fileName);
 
-//        return $request;
-//        exit();
-
+        $images = [];
+        foreach ($request->images as $singImage){
+            $imageName = time().rand(0000,9999).'.'.$singImage->getClientOriginalExtension();
+            $singImage->storeAs('public/productImages/',$imageName);
+            $images[] = [
+                'name' => 'storage/productImages/'.$imageName,
+            ];
+        }
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
-        Product::create($data);
+        $data['photo'] = 'storage/productImage/'.$fileName;
+        $product = Product::create($data);
+        $product->images()->createMany($images);
+
         return response()->json(['message' =>'Product save successfully done.'], 200);
+
     }
     public function show(Product $product)
     {

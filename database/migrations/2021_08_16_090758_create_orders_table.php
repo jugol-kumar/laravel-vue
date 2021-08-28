@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->float('pay_bill');
             $table->float('pay_due');
             $table->string('payby');
-            $table->date('order_date');
+            $table->string('order_date');
             $table->string('order_month');
             $table->integer('order_year');
             $table->timestamps();

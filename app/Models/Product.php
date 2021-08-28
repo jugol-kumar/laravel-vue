@@ -17,4 +17,8 @@ class Product extends Model
     public function supplier(){
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }
+
+    public function images(){
+        return $this->hasMany(Image::class, 'product_id');
+    }
 }

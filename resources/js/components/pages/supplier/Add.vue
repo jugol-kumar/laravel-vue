@@ -39,7 +39,7 @@
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="from.photo" alt="" style="width: 180px;height: 120px;">
+                    <img v-show="from.photo" :src="from.photo" alt="" style="width: 180px;height: 120px;">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>

@@ -18,17 +18,22 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+
+
         $this->validate($request, [
             'name' => 'required|max:30|min:1|unique:categories',
             'photo' => 'required',
         ]);
-        $photo = $request->photo;
-        $position = strpos($photo, ';');
-        $subString = substr($photo, 0,$position);
-        $imageExt = explode( '/',$subString )[1];
-        $imageName = time().rand(0000,9999).'.'.$imageExt;
-        $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
-        Storage::put("public/category/$imageName", $resize->__toString());
+        $photo = $request->image;
+        $imageName = time().random_int(1,9999).'.'.$photo->getClientOriginalExtension();
+
+//        $position = strpos($photo, ';');
+//        $subString = substr($photo, 0,$position);
+//        $imageExt = explode( '/',$subString )[1];
+//        $imageName = time().rand(0000,9999).'.'.$imageExt;
+        $photo->storeAs('public/category/', $imageName);
+//        $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
+//        Storage::put("public/category/$imageName", $resize->__toString());
 
         $uploadPath = "storage/category/$imageName";
 

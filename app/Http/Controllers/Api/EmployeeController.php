@@ -26,11 +26,17 @@ class EmployeeController extends Controller
         ]);
 
         if ($request->photo){
+
+//            return $request->photo;
+
             $photo = $request->photo;
             $position = strpos($photo, ';');
             $subString = substr($photo, 0,$position);
             $imageExt = explode( '/',$subString )[1];
             $imageName = time().rand(0000,9999).'.'.$imageExt;
+
+//            return $imageName;
+
             $resize = Image::make($photo)->resize(200, 180)->encode('jpg');
             Storage::put("public/employee/$imageName", $resize->__toString());
 

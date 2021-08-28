@@ -53,7 +53,7 @@ class CustomerController extends Controller
                 'position' => $request->position,
                 $userImage = ['user.svg', 'default.png'],
                 'address' => $request->address,
-                'photo' => 'storage/employee/'.$userImage[array_rand($userImage, 1)],
+                'photo' => 'storage/customers/'.$userImage[array_rand($userImage, 1)],
             ]);
             return response()->json(['message' =>'Customer save without image'], 200);
         }

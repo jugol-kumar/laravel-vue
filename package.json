@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.21",
+        "backend": "0.0.0",
         "bootstrap": "^4.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.6",
@@ -26,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "file-upload-with-preview": "^4.1.0",
         "moment": "^2.29.1",
         "view-design": "^4.5.0",
         "vue": "^2.6.12",

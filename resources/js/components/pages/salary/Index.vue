@@ -1,5 +1,99 @@
 <template>
     <div>
+
+
+        <div class="modal fade bd-example-modal-lg ml-8" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Product Preview</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xl-12">
+                            <!--begin::Nav Panel Widget 2-->
+                            <div class="card card-custom card-stretch gutter-b">
+                                <!--begin::Body-->
+                                <div class="card-body">
+                                    <!--begin::Wrapper-->
+                                    <div class="d-flex justify-content-between flex-column pt-4 h-100">
+                                        <!--begin::Container-->
+                                        <div class="pb-5">
+                                            <!--begin::Header-->
+                                            <div class="d-flex flex-column flex-center">
+                                                <!--begin::Symbol-->
+                                                <div class="symbol symbol-120 symbol-circle symbol-success overflow-hidden">
+                                                    <span class="symbol-label">
+                                                        <img :src="`${employeeSalary.photo}`" class="h-75 align-self-end" alt="">
+                                                    </span>
+                                                </div>
+                                                <!--end::Symbol-->
+                                                <!--begin::Username-->
+                                                <a href="#" class="card-title font-weight-bolder text-dark-75 text-hover-primary font-size-h4 m-0 pt-7 pb-1">
+                                                   {{ employeeSalary.name }}
+                                                </a>
+                                                <!--end::Username-->
+                                                <!--begin::Info-->
+                                                <div class="font-weight-bold text-dark-50 font-size-sm pb-6">{{ employeeSalary.email }}</div>
+                                                <!--end::Info-->
+                                            </div>
+                                            <!--end::Header-->
+                                            <!--begin::Body-->
+                                            <div class="pt-1">
+                                                <!--begin::Text-->
+                                                <p class="text-dark-75 font-weight-nirmal font-size-lg m-0 pb-7">
+                                                    This Employee Salary History...
+                                                </p>
+                                                <!--end::Text-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex align-items-center pb-9">
+                                                    <table class="table table-bordered">
+
+                                                        <thead>
+                                                            <th>Month Name</th>
+                                                            <th>Payment Date</th>
+                                                            <th>Payment Amount</th>
+                                                            <th>Payment Year</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(salary , i) in employeeSalary.salaries">
+                                                                <td>{{ salary.month }}</td>
+                                                                <td>{{ salary.date }}</td>
+                                                                <td>{{ salary.amount }}</td>
+                                                                <td>{{ salary.year }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Body-->
+                                        </div>
+                                        <!--eng::Container-->
+                                        <!--begin::Footer-->
+                                        <div class="d-flex flex-center" id="kt_sticky_toolbar_chat_toggler_1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Chat Example">
+                                            <button class="btn btn-primary font-weight-bolder font-size-sm py-3 px-14" data-toggle="modal" data-target="#kt_chat_modal">Write a Message</button>
+                                        </div>
+                                        <!--end::Footer-->
+                                    </div>
+                                    <!--end::Wrapper-->
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::Nav Panel Widget 2-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card card-custom">
             <div class="card-header flex-wrap py-5">
                 <div class="card-title">
@@ -7,143 +101,98 @@
                         <span class="d-block text-muted pt-2 font-size-sm">all expense details is here</span></h3>
                 </div>
                 <div class="card-toolbar">
-                    <!--begin::Dropdown-->
-                    <div class="dropdown dropdown-inline mr-2">
-                        <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="svg-icon svg-icon-md">
-                                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
-                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>Export</button>
-                        <!--begin::Dropdown Menu-->
-                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                            <!--begin::Navigation-->
-                            <ul class="navi flex-column navi-hover py-2">
-                                <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Choose an option:</li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-print"></i>
-																</span>
-                                        <span class="navi-text">Print</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-copy"></i>
-																</span>
-                                        <span class="navi-text">Copy</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-excel-o"></i>
-																</span>
-                                        <span class="navi-text">Excel</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-text-o"></i>
-																</span>
-                                        <span class="navi-text">CSV</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-pdf-o"></i>
-																</span>
-                                        <span class="navi-text">PDF</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!--end::Navigation-->
-                        </div>
-                        <!--end::Dropdown Menu-->
-                    </div>
-                    <!--end::Dropdown-->
-                    <!--begin::Button-->
-                    <router-link :to="{name:'AddEmployee'}" href="#" class="btn btn-primary font-weight-bolder">
-                        <span class="svg-icon svg-icon-md">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <circle fill="#000000" cx="9" cy="15" r="6" />
-                                    <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                                </g>
-                            </svg>
-                            <!--end::Svg Icon-->
-                        </span>New Record</router-link>
-                    <!--end::Button-->
                 </div>
             </div>
             <div class="card-body">
-                <!--begin: Datatable-->
-                <table class="table table-separate table-head-custom table-checkable" id="">
-                    <thead>
-                        <tr>
-                        <th>Record ID</th>
-                        <th>Month</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(salary, i) in salaries">
-                            <td>{{ i+1 }}</td>
-                            <td>{{ salary.month }}</td>
-                            <td>{{ salary.date }}</td>
-                            <td>
-                                <router-link :to="{name:'MonthSalary', params:{id:salary.month} }" class="btn btn-sm btn-icon btn-bg-light btn-icon-warning btn-hover-warning">
-                                    <i class="flaticon2-telegram-logo"></i>
-                                </router-link>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!--end: Datatable-->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Employees</h2>
+                    </div>
+                    <div class="card-body">
+                        <!--begin: Datatable-->
+                        <table class="table table-separate table-head-custom table-checkable" id="">
+                            <thead>
+                            <tr>
+                                <th>Record ID</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(emp, i) in employees">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ emp.name }}</td>
+                                <td><img :src="`${emp.photo}`" class="rounded-circle" style="width: 50px; height: 50px;" alt=""></td>
+                                <td>
+                                    <button class="btn btn-default" @click="empSalary(emp.id)">Show Me</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Index",
-    data() {
-        return {
-            salaries : {}
+    name: "Edit",
+    data(){
+        return{
+            salaries:{},
+            employees:{},
+            employeeSalary:{},
         }
     },
     methods: {
-        allSalary() {
-            axios.get('api/salary')
-            .then(res => {
-                console.log(res);
-                this.salaries = res.data
+        updateExpense(){
+            let id = this.$route.params.id;
+            axios.patch('/api/expense/'+id, this.from)
+            .then( res => {
+                this.from= '';
+                this.errors = '';
+                Toast.fire({
+                    icon: 'success',
+                    title: res.data.message
+                })
+                this.$router.push({name:'ManageExpense'});
             })
             .catch(err => {
-                err.response.data.errors;
+                this.errors = err.response.data.errors;
                 Toast.fire({
                     icon: 'warning',
                     title: err.response.statusText
                 })
             })
         },
+        empSalary(id){
+            axios.get('/api/employee-salary/'+id)
+            .then( res => {
+                $('#exampleModal').modal('show');
+                this.employeeSalary = res.data;
+            })
+            .catch(err => {
+                this.errors = err.response.data.errors;
+                Toast.fire({
+                    icon: 'warning',
+                    title: err.response.statusText
+                })
+            })
+        }
     },
+
     created() {
-        this.allSalary();
+        axios.get('/api/employee')
+        .then(res => {
+            this.employees = res.data;
+        })
+        .catch(err => {
+            console.log(err.response.data)
+        })
     }
 }
 </script>
