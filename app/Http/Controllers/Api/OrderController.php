@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Pos;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,11 +47,20 @@ class OrderController extends Controller
         $posProducts = Pos::all();
 
         foreach ($posProducts as $product){
+
+            $qtyProduct = Product::findORFail($product->product_id);
+            $qtyProduct->update([
+                'stock' => $qtyProduct->stock - $product->quantity
+            ]);
+
             $oProduct['order_id'] = $order->id;
             $oProduct['product_id'] = $product->product_id;
+            $oProduct['product_title'] = $product->title;
             $oProduct['product_quantity'] = $product->quantity;
             $oProduct['product_price'] = $product->price;
             $oProduct['sub_total'] = $product->sub_total;
+            $oProduct['product_image'] = $product->photo;
+
             OrderDetails::create($oProduct);
         }
 
@@ -59,8 +69,13 @@ class OrderController extends Controller
     }
     public function show(Order $order)
     {
-        //
+        return response()->json(Order::find('id',$order->id)->with('orderdetails')->first());
     }
+
+    public function orderDetails($id){
+        return Order::with('orderdetails')->findOrFail($id);
+    }
+
     public function update(Request $request, Order $order)
     {
         //

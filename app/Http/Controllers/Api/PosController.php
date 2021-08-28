@@ -17,29 +17,33 @@ class PosController extends Controller
     {
         $product = Product::findOrFail($request->id);
 
-        $checkProduct = Pos::where('product_id', $request->id)->first();
+        if ($product->stock !=  0){
+            $checkProduct = Pos::where('product_id', $request->id)->first();
+            if ($checkProduct){
+                if ($product->stock <= $checkProduct->quantity ){
+                    return response()->json(['message' =>'Minimum qty is lesthen or equal '.$product->stock ], 500);
+                }else{
+                    $checkProduct->increment('quantity');
+                    $subTotal = $checkProduct->quantity * $checkProduct->price;
+                    $checkProduct->update([
+                        'sub_total' => $subTotal
+                    ]);
+                    return response()->json(['message' =>'Update To Cart'], 200);
+                }
 
-        if ($checkProduct){
-            if ($product->stock <= $checkProduct->quantity){
-                return response()->json(['message' =>'Minimum qty is lesthen or equal '.$product->stock], 500);
             }else{
-                $checkProduct->increment('quantity');
-                $subTotal = $checkProduct->quantity * $checkProduct->price;
-                $checkProduct->update([
-                    'sub_total' => $subTotal
+                Pos::create([
+                    'product_id' => $request->id,
+                    'title' => $product->title,
+                    'quantity' => 1,
+                    'price' => $product->selling_price,
+                    'sub_total' => $product->selling_price,
+                    'photo' => $product->photo
                 ]);
-                return response()->json(['message' =>'Update To Cart'], 200);
             }
 
         }else{
-            Pos::create([
-                'product_id' => $request->id,
-                'title' => $product->title,
-                'quantity' => 1,
-                'price' => $product->selling_price,
-                'sub_total' => $product->selling_price,
-                'photo' => 'default.png'
-            ]);
+            return response()->json(['message' =>'Product Minimum quantity is not available'], 500);
         }
 
         return response()->json(['message' =>'Product Add To Cart'], 200);
@@ -50,16 +54,19 @@ class PosController extends Controller
         $proId =  $cartInfo->product_id;
         $product = Product::findOrFail($proId);
 
-
-        if ($product->stock <= $cartInfo->quantity){
-            return response()->json(['message' =>'Minimum qty is lesthen or equal '.$product->stock], 500);
+        if ($product->stock != 0){
+            if ($product->stock <= $cartInfo->quantity){
+                return response()->json(['message' =>'Minimum qty is lesthen or equal '.$product->stock], 500);
+            }else{
+                $cartInfo->increment('quantity');
+                $subTotal = $cartInfo->quantity * $cartInfo->price;
+                $cartInfo->update([
+                    'sub_total' => $subTotal
+                ]);
+                return response()->json(['message' =>'Update To Cart'], 200);
+            }
         }else{
-            $cartInfo->increment('quantity');
-            $subTotal = $cartInfo->quantity * $cartInfo->price;
-            $cartInfo->update([
-                'sub_total' => $subTotal
-            ]);
-            return response()->json(['message' =>'Update To Cart'], 200);
+            return response()->json(['message' =>'Product Minimum quantity is not available'], 500);
         }
 
 

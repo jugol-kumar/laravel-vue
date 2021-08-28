@@ -108,6 +108,7 @@
                     <tr>
                         <th>Product Id</th>
                         <th>Product Fetureds</th>
+                        <th>Product Stock</th>
                         <th>Title</th>
                         <th>Category name</th>
                         <th>Supplier name</th>
@@ -125,6 +126,7 @@
                             <img v-if="product.photo==null" :src="`img/download.png`" alt=""
                                  style="width:73px;height:70px;border-radius: 50px;">
                         </td>
+                        <td>{{ product.stock }}</td>
                         <td><a href="#" @click="showSingleProduct(product.id)">{{ product.title }}</a></td>
                         <td>{{ product.category.name }}</td>
                         <td>{{ product.supplier.name }}</td>

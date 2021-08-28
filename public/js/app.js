@@ -4960,40 +4960,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ManageEmployee",
   data: function data() {
     return {
-      orders: {}
+      orders: {},
+      orderDetails: {}
     };
   },
   methods: {
@@ -5002,6 +4974,20 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/order').then(function (res) {
         _this.orders = res.data;
+      })["catch"](function (err) {
+        err.response.data.errors;
+        Toast.fire({
+          icon: 'warning',
+          title: err.response.statusText
+        });
+      });
+    },
+    showSingleOrder: function showSingleOrder(id) {
+      var _this2 = this;
+
+      axios.get('api/order-details/' + id).then(function (res) {
+        $('#exampleModal').modal('show');
+        _this2.orderDetails = res.data;
         console.log(res.data);
       })["catch"](function (err) {
         err.response.data.errors;
@@ -5011,15 +4997,32 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    showOrderDetails: function showOrderDetails() {
-      $('#exampleModal').modal('show');
-    },
     isLogined: function isLogined() {
       if (!User.loggedIn()) {
         this.$router.push({
           name: "Login"
         });
       }
+    }
+  },
+  computed: {
+    totalQuantity: function totalQuantity() {
+      var sum = 0;
+
+      for (var i = 0; i < this.orders.length; i++) {
+        sum += this.orders[i].quantity;
+      }
+
+      return sum;
+    },
+    grandTotalAmount: function grandTotalAmount() {
+      var sum = 0;
+
+      for (var i = 0; i < this.orders.length; i++) {
+        sum += this.orders[i].pay_bill;
+      }
+
+      return sum;
     }
   },
   created: function created() {
@@ -5967,6 +5970,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -41702,7 +41707,7 @@ var render = function() {
                         attrs: { href: "#", title: "Edit details" },
                         on: {
                           click: function($event) {
-                            return _vm.showOrderDetails()
+                            return _vm.showSingleOrder(order.id)
                           }
                         }
                       },
@@ -41839,13 +41844,212 @@ var render = function() {
                 ])
               }),
               0
-            )
+            ),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", { staticClass: "table table-striped" }, [
+                _c("th"),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v("Grand Total: " + _vm._s(_vm.grandTotalAmount) + " Tk")
+                ]),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v("Total Quantity: " + _vm._s(_vm.totalQuantity))
+                ])
+              ])
+            ])
           ]
         )
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bd-example-modal-lg ml-8",
+        attrs: {
+          id: "exampleModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "row justify-content-center py-8 px-8 py-md-27 px-md-0"
+                  },
+                  [
+                    _c("div", { staticClass: "col-md-12" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "border-bottom w-100" }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "d-flex justify-content-between pt-6" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "d-flex flex-column flex-root" },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "font-weight-bolder mb-2" },
+                                [_vm._v("ORDER DATE")]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "opacity-70" }, [
+                                _vm._v(_vm._s(_vm.orderDetails.order_date))
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "d-flex flex-column flex-root" },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "font-weight-bolder mb-2" },
+                                [_vm._v("ORDER NO.")]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "opacity-70" }, [
+                                _vm._v(_vm._s(Math.random() * 10))
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(4)
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "row justify-content-center py-8 px-8 py-md-10 px-md-0"
+                  },
+                  [
+                    _c("div", { staticClass: "col-md-10" }, [
+                      _c("div", { staticClass: "table-responsive" }, [
+                        _c("table", { staticClass: "table table-borderless" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.orderDetails.orderdetails, function(
+                              product,
+                              i
+                            ) {
+                              return _c(
+                                "tr",
+                                { staticClass: "font-weight-boldest" },
+                                [
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "border-0 pl-0 pt-7 d-flex align-items-center"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "symbol symbol-40 flex-shrink-0 mr-4 bg-light"
+                                        },
+                                        [
+                                          _c("div", {
+                                            staticClass: "symbol-label",
+                                            style: {
+                                              backgroundImage:
+                                                "url( " +
+                                                product.product_image +
+                                                ")"
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._v(
+                                        "\n                                                    " +
+                                          _vm._s(product.product_title) +
+                                          "\n                                                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "text-right pt-7 align-middle"
+                                    },
+                                    [_vm._v(_vm._s(product.product_quantity))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "text-right pt-7 align-middle"
+                                    },
+                                    [_vm._v(_vm._s(product.product_price))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "text-primary pr-0 pt-7 text-right align-middle"
+                                    },
+                                    [_vm._v(" " + _vm._s(product.sub_total))]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _vm._m(7)
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -41892,567 +42096,231 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Product Preview")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
-        staticClass: "modal fade bd-example-modal-lg ml-8",
-        attrs: {
-          id: "exampleModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
+        staticClass:
+          "d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row"
       },
       [
+        _c("h1", { staticClass: "display-4 font-weight-boldest mb-10" }, [
+          _vm._v("ORDER DETAILS")
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          { staticClass: "d-flex flex-column align-items-md-end px-0" },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v("Product Preview")]
-                ),
+            _c("a", { staticClass: "mb-5", attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "assets/media/logos/logo-dark.png", alt: "" }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass: "d-flex flex-column align-items-md-end opacity-70"
+              },
+              [
+                _c("span", [
+                  _vm._v("Cecilia Chapman, 711-2880 Nulla St, Mankato")
+                ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
+                _c("span", [_vm._v("Mississippi 96522")])
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex flex-column flex-root" }, [
+      _c("span", { staticClass: "font-weight-bolder mb-2" }, [
+        _vm._v("DELIVERED TO.")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "opacity-70" }, [
+        _vm._v(
+          "Iris Watson, P.O. Box 283 8562 Fusce RD.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+        ),
+        _c("br"),
+        _vm._v("Fredrick Nebraska 20620")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c(
+          "th",
+          { staticClass: "pl-0 font-weight-bold text-muted text-uppercase" },
+          [_vm._v("Ordered Items")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-right font-weight-bold text-muted text-uppercase"
+          },
+          [_vm._v("Qty")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-right font-weight-bold text-muted text-uppercase"
+          },
+          [_vm._v("Unit Price")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "text-right pr-0 font-weight-bold text-muted text-uppercase"
+          },
+          [_vm._v("Amount")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0 mx-0"
+      },
+      [
+        _c("div", { staticClass: "col-md-10" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table table-borderless" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c(
+                    "th",
+                    {
+                      staticClass: "font-weight-bold text-muted text-uppercase"
+                    },
+                    [_vm._v("PAYMENT TYPE")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      staticClass: "font-weight-bold text-muted text-uppercase"
+                    },
+                    [_vm._v("PAYMENT STATUS")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      staticClass: "font-weight-bold text-muted text-uppercase"
+                    },
+                    [_vm._v("PAYMENT DATE")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      staticClass:
+                        "font-weight-bold text-muted text-uppercase text-right"
+                    },
+                    [_vm._v("TOTAL PAID")]
+                  )
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "card card-custom gutter-b" }, [
-                  _c("div", { staticClass: "card-body p-0" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "row justify-content-center py-8 px-8 py-md-27 px-md-0"
-                      },
-                      [
-                        _c("div", { staticClass: "col-md-10" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row"
-                            },
-                            [
-                              _c(
-                                "h1",
-                                {
-                                  staticClass:
-                                    "display-4 font-weight-boldest mb-10"
-                                },
-                                [_vm._v("ORDER DETAILS")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "d-flex flex-column align-items-md-end px-0"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "mb-5",
-                                      attrs: { href: "#" }
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "assets/media/logos/logo-dark.png",
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "d-flex flex-column align-items-md-end opacity-70"
-                                    },
-                                    [
-                                      _c("span", [
-                                        _vm._v(
-                                          "Cecilia Chapman, 711-2880 Nulla St, Mankato"
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("span", [_vm._v("Mississippi 96522")])
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "border-bottom w-100" }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "d-flex justify-content-between pt-6"
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "d-flex flex-column flex-root" },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "font-weight-bolder mb-2" },
-                                    [_vm._v("ORDER DATE")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "opacity-70" }, [
-                                    _vm._v("Jan 07, 2020")
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "d-flex flex-column flex-root" },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "font-weight-bolder mb-2" },
-                                    [_vm._v("ORDER NO.")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "opacity-70" }, [
-                                    _vm._v("64616-103")
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "d-flex flex-column flex-root" },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "font-weight-bolder mb-2" },
-                                    [_vm._v("DELIVERED TO.")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "opacity-70" }, [
-                                    _vm._v(
-                                      "Iris Watson, P.O. Box 283 8562 Fusce RD.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                    ),
-                                    _c("br"),
-                                    _vm._v("Fredrick Nebraska 20620")
-                                  ])
-                                ]
-                              )
-                            ]
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "row justify-content-center py-8 px-8 py-md-10 px-md-0"
-                      },
-                      [
-                        _c("div", { staticClass: "col-md-10" }, [
-                          _c("div", { staticClass: "table-responsive" }, [
-                            _c("table", { staticClass: "table" }, [
-                              _c("thead", [
-                                _c("tr", [
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "pl-0 font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("Ordered Items")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "text-right font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("Qty")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "text-right font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("Unit Price")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "text-right pr-0 font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("Amount")]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tbody", [
-                                _c(
-                                  "tr",
-                                  { staticClass: "font-weight-boldest" },
-                                  [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-0 pl-0 pt-7 d-flex align-items-center"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "symbol symbol-40 flex-shrink-0 mr-4 bg-light"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "symbol-label",
-                                              staticStyle: {
-                                                "background-image":
-                                                  "url('assets/media/products/11.png')"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._v(
-                                          "\n                                                        Street Sneakers"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-right pt-7 align-middle"
-                                      },
-                                      [_vm._v("2")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-right pt-7 align-middle"
-                                      },
-                                      [_vm._v("$90.00")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-primary pr-0 pt-7 text-right align-middle"
-                                      },
-                                      [_vm._v("$180.00")]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "tr",
-                                  {
-                                    staticClass:
-                                      "font-weight-boldest border-bottom-0"
-                                  },
-                                  [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 pl-0 py-4 d-flex align-items-center"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "symbol symbol-40 flex-shrink-0 mr-4 bg-light"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "symbol-label",
-                                              staticStyle: {
-                                                "background-image":
-                                                  "url('assets/media/products/2.png')"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._v(
-                                          "\n                                                        Headphones"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 text-right py-4 align-middle"
-                                      },
-                                      [_vm._v("1")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 text-right py-4 align-middle"
-                                      },
-                                      [_vm._v("$449.00")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-primary border-top-0 pr-0 py-4 text-right align-middle"
-                                      },
-                                      [_vm._v("$449.00")]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "tr",
-                                  {
-                                    staticClass:
-                                      "font-weight-boldest border-bottom-0"
-                                  },
-                                  [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 pl-0 py-4 d-flex align-items-center"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "symbol symbol-40 flex-shrink-0 mr-4 bg-light"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "symbol-label",
-                                              staticStyle: {
-                                                "background-image":
-                                                  "url('assets/media/products/1.png')"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._v(
-                                          "\n                                                        Smartwatch"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 text-right py-4 align-middle"
-                                      },
-                                      [_vm._v("1")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "border-top-0 text-right py-4 align-middle"
-                                      },
-                                      [_vm._v("$160.00")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-primary border-top-0 pr-0 py-4 text-right align-middle"
-                                      },
-                                      [_vm._v("$160.00")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0 mx-0"
-                      },
-                      [
-                        _c("div", { staticClass: "col-md-10" }, [
-                          _c("div", { staticClass: "table-responsive" }, [
-                            _c("table", { staticClass: "table" }, [
-                              _c("thead", [
-                                _c("tr", [
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("PAYMENT TYPE")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("PAYMENT STATUS")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "font-weight-bold text-muted text-uppercase"
-                                    },
-                                    [_vm._v("PAYMENT DATE")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "font-weight-bold text-muted text-uppercase text-right"
-                                    },
-                                    [_vm._v("TOTAL PAID")]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tbody", [
-                                _c(
-                                  "tr",
-                                  { staticClass: "font-weight-bolder" },
-                                  [
-                                    _c("td", [_vm._v("Credit Card")]),
-                                    _vm._v(" "),
-                                    _c("td", [_vm._v("Success")]),
-                                    _vm._v(" "),
-                                    _c("td", [_vm._v("Jan 07, 2020")]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "text-primary font-size-h3 font-weight-boldest text-right"
-                                      },
-                                      [_vm._v("$789.00")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "row justify-content-center py-8 px-8 py-md-10 px-md-0"
-                      },
-                      [
-                        _c("div", { staticClass: "col-md-10" }, [
-                          _c(
-                            "div",
-                            { staticClass: "d-flex justify-content-between" },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-light-primary font-weight-bold",
-                                  attrs: {
-                                    type: "button",
-                                    onclick: "window.print();"
-                                  }
-                                },
-                                [_vm._v("Download Order Details")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-primary font-weight-bold",
-                                  attrs: {
-                                    type: "button",
-                                    onclick: "window.print();"
-                                  }
-                                },
-                                [_vm._v("Print Order Details")]
-                              )
-                            ]
-                          )
-                        ])
-                      ]
-                    )
-                  ])
+              _c("tbody", [
+                _c("tr", { staticClass: "font-weight-bolder" }, [
+                  _c("td", [_vm._v("Credit Card")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Success")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("Jan 07, 2020")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass:
+                        "text-primary font-size-h3 font-weight-boldest text-right"
+                    },
+                    [_vm._v("$789.00")]
+                  )
                 ])
               ])
             ])
-          ]
-        )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row justify-content-center py-8 px-8 py-md-10 px-md-0" },
+      [
+        _c("div", { staticClass: "col-md-10" }, [
+          _c("div", { staticClass: "d-flex justify-content-between" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-light-primary font-weight-bold",
+                attrs: { type: "button", onclick: "window.print();" }
+              },
+              [_vm._v("Download Order Details")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary font-weight-bold",
+                attrs: { type: "button", onclick: "window.print();" }
+              },
+              [_vm._v("Print Order Details")]
+            )
+          ])
+        ])
       ]
     )
   }
@@ -44513,6 +44381,8 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.stock))]),
+                  _vm._v(" "),
                   _c("td", [
                     _c(
                       "a",
@@ -44900,6 +44770,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Product Id")]),
         _vm._v(" "),
         _c("th", [_vm._v("Product Fetureds")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Product Stock")]),
         _vm._v(" "),
         _c("th", [_vm._v("Title")]),
         _vm._v(" "),

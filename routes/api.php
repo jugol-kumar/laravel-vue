@@ -57,6 +57,7 @@ Route::apiResource('customer',  CustomerController::class);
 Route::apiResource('pos',       PosController::class);
 
 Route::apiResource('order',     OrderController::class);
+Route::get('/order-details/{id}',               [OrderController::class, 'orderDetails']);
 
 Route::delete('/pos/delete-cart/{id}',          [PosController::class, 'deleteItem']);
 

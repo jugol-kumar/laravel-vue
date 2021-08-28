@@ -17,9 +17,11 @@ class CreateOrderDetailsTable extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_title');
             $table->integer('product_quantity');
-            $table->float('product_price');
-            $table->float('sub_total');
+            $table->float('product_price', 20,2);
+            $table->float('sub_total', 20,2);
+            $table->string('product_image')->default('default.png');
             $table->timestamps();
         });
     }
