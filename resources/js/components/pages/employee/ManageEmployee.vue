@@ -141,6 +141,7 @@
                             </td>
                         </tr>
                     </tbody>
+<!--                    <VueTailwindPagination :current="currentPage" :total="total" :per-page="perPage" @page-changed="current = $event"/>-->
                 </table>
                 <!--end: Datatable-->
             </div>
@@ -153,7 +154,7 @@ export default {
     name: "ManageEmployee",
     data() {
         return {
-            employes : {}
+            employes : {},
         }
     },
     methods: {

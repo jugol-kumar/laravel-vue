@@ -4,6 +4,7 @@ import User from './helpers/User'
 import Swal from "sweetalert2";
 import axios from "axios";
 import moment from 'moment'
+
 Vue.use(moment)
 
 Vue.filter('dateFormat', function (value){

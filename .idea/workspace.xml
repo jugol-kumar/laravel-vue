@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3b7f4c-b5da-4bc5-a914-9768a7c62306" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302682897422.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683075824.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683615629.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683827862.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrderDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrderDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_08_16_180708_create_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_08_16_180708_create_order_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/order/TodayOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/order/TodayOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/product/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/product/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/brand/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/brand/Add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/brand/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/brand/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +170,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LaraVueBlog" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -213,6 +215,12 @@
       <workItem from="1630051498323" duration="9804000" />
       <workItem from="1630063581114" duration="13963000" />
       <workItem from="1630164587294" duration="15753000" />
+      <workItem from="1630247196404" duration="219000" />
+      <workItem from="1630247442201" duration="972000" />
+      <workItem from="1630259425911" duration="374000" />
+      <workItem from="1630268072331" duration="422000" />
+      <workItem from="1630336084141" duration="452000" />
+      <workItem from="1630339520691" duration="1163000" />
     </task>
     <servers />
   </component>

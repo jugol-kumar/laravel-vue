@@ -67,7 +67,10 @@ export default {
 
             axios.post('api/brand', formdata)
             .then( res => {
-                this.from= '';
+                this.from.name= '';
+                this.from.description= '';
+                this.from.photo= '';
+                this.avatar= '';
                 this.errors = '';
                 Toast.fire({
                     icon: 'success',

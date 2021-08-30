@@ -90,7 +90,7 @@
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->
-                <table class="table table-separate table-head-custom table-checkable" id="">
+                <table class="table table-borderless" id="">
                     <thead>
                         <tr>
                         <th>Record ID</th>

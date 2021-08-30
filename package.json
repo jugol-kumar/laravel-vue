@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@ocrv/vue-tailwind-pagination": "0.0.4",
         "file-upload-with-preview": "^4.1.0",
         "moment": "^2.29.1",
         "view-design": "^4.5.0",

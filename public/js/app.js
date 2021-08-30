@@ -2185,7 +2185,10 @@ __webpack_require__.r(__webpack_exports__);
 
       formdata.append('photo', this.from.photo);
       axios.post('api/brand', formdata).then(function (res) {
-        _this2.from = '';
+        _this2.from.name = '';
+        _this2.from.description = '';
+        _this2.from.photo = '';
+        _this2.avatar = '';
         _this2.errors = '';
         Toast.fire({
           icon: 'success',
@@ -3783,6 +3786,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -37298,11 +37302,7 @@ var render = function() {
       _c("div", { staticClass: "card-body" }, [
         _c(
           "table",
-          {
-            staticClass:
-              "table table-separate table-head-custom table-checkable",
-            attrs: { id: "" }
-          },
+          { staticClass: "table table-borderless", attrs: { id: "" } },
           [
             _vm._m(2),
             _vm._v(" "),
