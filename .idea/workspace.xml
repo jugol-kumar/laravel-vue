@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3b7f4c-b5da-4bc5-a914-9768a7c62306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302682897422.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683075824.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683615629.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/brands/16302683827862.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/brand/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/brand/Add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/brand/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/brand/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/ManageEmployee.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Auth/Auth.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Auth/Auth.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,10 +163,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LaraVueBlog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -221,6 +215,9 @@
       <workItem from="1630268072331" duration="422000" />
       <workItem from="1630336084141" duration="452000" />
       <workItem from="1630339520691" duration="1163000" />
+      <workItem from="1630350518507" duration="178000" />
+      <workItem from="1632235500868" duration="862000" />
+      <workItem from="1632236633071" duration="3920000" />
     </task>
     <servers />
   </component>

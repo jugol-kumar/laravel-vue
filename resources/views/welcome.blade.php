@@ -103,14 +103,23 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Header Mobile-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
+
+
+
+
+
+
+
+
         <div class="d-flex flex-row flex-column-fluid page">
             <!--begin::Aside-->
-            <div style="display:none!important;"  v-show="$route.path === '/' ? false : true"  class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+            <div  v-show="$route.path == '/' ? false : true" style="display: none!important;" class="aside aside-left aside-fixed flex-column flex-row-auto" id="kt_aside">
                 <!--begin::Brand-->
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
                     <a href="index.html" class="brand-logo">
                         <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-light.png') }}" />
+
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toggle-->
@@ -2213,6 +2222,11 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--end::Wrapper-->
         </div>
         <!--end::Page-->
+
+
+
+
+
     </div>
     <!--end::Main-->
     <!-- begin::User Panel-->
@@ -3823,11 +3837,19 @@ License: You must have a valid license purchased only from themeforest(the above
 </script>
 
 <script>
+
     let token = localStorage.getItem('_token');
+
+    console.log(token);
+
     if(token){
-        $('#kt_aside').css('display','');
-        $('#kt_header').css('display', '');
+        // $('#kt_aside').css('display','');
+        // $("#kt_aside").attr("style", "")
+        $('#kt_header').css('display', 'd-flex');
+
         $('#kt_subheader').css('display', '');
+
+        console.log("yeah this is not get");
     }
 
 </script>
