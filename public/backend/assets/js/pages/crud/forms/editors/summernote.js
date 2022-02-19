@@ -11,8 +11,23 @@ var KTSummernoteDemo = function () {
     // Private functions
     var demos = function () {
         $('.summernote').summernote({
-            height: 400,
-            tabsize: 2
+            height: 300,
+            tabsize: 14,
+        });
+
+        $('.caegroyTextArea').summernote({
+            height:200,
+            tabsize: 2,
+
+            toolbar:[
+
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['picture', ['picture']]
+            ]
         });
     }
 

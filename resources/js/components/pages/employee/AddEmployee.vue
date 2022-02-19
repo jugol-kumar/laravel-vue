@@ -74,11 +74,13 @@ export default {
                 photo:null,
             },
             errors:{},
+            image:{},
         }
     },
     methods: {
         uploadFile(event){
             let File = event.target.files[0];
+            this.image = File;
             let reader = new FileReader();
             reader.onload = event => {
                 this.from.photo = event.target.result
@@ -86,7 +88,17 @@ export default {
             reader.readAsDataURL(File);
         },
         saveEmployee(){
-            axios.post('api/employee', this.from)
+            // axios.post('api/employee', this.from)
+
+            let fromData = new FormData;
+            fromData.append('name', this.from.name)
+            fromData.append('email', this.from.email)
+            fromData.append('phone', this.from.phone)
+            fromData.append('position', this.from.position)
+            fromData.append('address', this.from.address)
+            fromData.append('image', this.image)
+
+            axios.post('api/employee', fromData)
             .then( res => {
                 this.from= '';
                 this.errors = '';

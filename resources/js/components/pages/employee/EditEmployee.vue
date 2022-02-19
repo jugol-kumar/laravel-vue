@@ -44,7 +44,7 @@
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="`${ from.photo }`" alt="" style="width: 180px;height: 120px;">
+                    <img :src="`http://localhost:8000/${ from.photo }`" alt="" style="width: 180px;height: 120px;">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -60,7 +60,7 @@
 
 <script>
 export default {
-    name: "AddEmployee",
+    name: "EditEmployee",
     data(){
         return{
             from: {
@@ -70,21 +70,45 @@ export default {
                 position: '',
                 address: '',
                 photo:'',
+                image:{},
             },
             errors:{},
+
+            editData:{
+                name: '',
+                email: '',
+                phone:'',
+                position: '',
+                address: '',
+                photo:'',
+                image:{},
+            }
         }
     },
     methods: {
         uploadFile(event){
             let File = event.target.files[0];
+
+            this.from.image = File;
             let reader = new FileReader();
             reader.onload = event => {
                 this.from.photo = event.target.result
             }
             reader.readAsDataURL(File);
         },
+
+
         updateEmployee(){
             let id = this.$route.params.id;
+            let fromData = new FormData;
+            fromData.append('name', this.from.name)
+            fromData.append('email', this.from.email)
+            fromData.append('phone', this.from.phone)
+            fromData.append('position', this.from.position)
+            fromData.append('address', this.from.address)
+            fromData.append('image', this.image)
+
+
             axios.patch('/api/employee/'+id, this.from)
                 .then( res => {
                     this.from= '';

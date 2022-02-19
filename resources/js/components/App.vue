@@ -236,6 +236,9 @@
 <script>
 export default {
   name: "App.vue",
+    created(){
+        this.isLogined();
+    }
 };
 </script>
 

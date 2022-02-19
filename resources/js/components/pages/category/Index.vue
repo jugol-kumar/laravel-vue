@@ -105,7 +105,7 @@
                             <td>{{ i+1 }}</td>
                             <td>
                                 <span class="symbol-label">
-                                     <img :src="`${cat.photo}`" alt="" class="rounded-circle" style="width: 50px; height: 50px;">
+                                     <img :src="`${cat.photo}`" alt="" style="height:35px">
                                 </span>
                             </td>
                             <td>{{ cat.name }}</td>

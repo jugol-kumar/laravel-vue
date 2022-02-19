@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "Dashboard",
     created() {
+        // this.isLogined();
         if (!User.loggedIn()){
             this.$router.push({name:"Login"})
         }

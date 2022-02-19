@@ -9,20 +9,20 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Category Name</label>
-                        <input type="text" class="form-control form-control-solid" v-model="from.name" placeholder="Enter employee name..."/>
+                        <input type="text" class="form-control form-control-solid" v-model="editCategories.name" placeholder="Enter employee name..."/>
                         <small class="text-danger" v-if="errors.name">{{ errors.name[0]}}</small>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleTextarea">Category Description</label>
-                        <textarea id="exampleTextarea" class="form-control form-control-solid" v-model="from.description" rows="3"></textarea>
+                        <textarea id="exampleTextarea" class="form-control form-control-solid" v-model="editCategories.description" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Photo</label>
                         <input type="file" class="form-control"  @change="uploadFile">
                     </div>
-                    <img :src="from.photo" alt="" style="width: 180px;height: 120px;">
+                    <img :src="`http://localhost:8000/${editCategories.photo}`" ref="showEditImage" alt="" style="width: 180px;height: 120px;">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -47,27 +47,39 @@ export default {
                 photo:'',
             },
             errors:{},
+
+            editCategories:{},
         }
     },
     methods: {
         uploadFile(event){
+            this.editCategories.photo = event.target.files[0];
             let File = event.target.files[0];
             let reader = new FileReader();
             reader.onload = event => {
-                this.from.photo = event.target.result
+                this.$refs.showEditImage.src = event.target.result;
+
+                // this.from.photo = event.target.result
             }
             reader.readAsDataURL(File);
         },
         updateCategory(){
             let id = this.$route.params.id;
-            axios.patch('/api/category/'+id, this.from)
+            let formData = new FormData();
+
+            formData.append('id', id);
+            formData.append('name', this.editCategories.name);
+            formData.append('description', this.editCategories.description);
+            formData.append('photo', this.editCategories.photo);
+
+            axios.post('/api/category/update/', formData)
                 .then( res => {
                     this.from= '';
                     this.errors = '';
                     Toast.fire({
                         icon: 'success',
                         title: res.data.message
-                    })
+                    });
                     this.$router.push({name:'ManageCategory'});
                 })
                 .catch(err => {
@@ -91,7 +103,10 @@ export default {
         let id = this.$route.params.id;
         axios.get('/api/category/'+id)
         .then(res => {
-            this.from = res.data;
+            // this.from = res.data;
+
+
+            this.editCategories = res.data;
         })
         .catch(err => {
             console.log(err.response.data)

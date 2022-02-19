@@ -2,11 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3b7f4c-b5da-4bc5-a914-9768a7c62306" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/category/1633888050264.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/1633888230501.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/16354906941444.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/16355074823590.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/163550749217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/1635520656227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/16355214069175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/category/16355273962993.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/employee/16354895052764.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/category/16338870724572.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/category/1633887790287.jpg/Je0BypnOSHWPLAuwt2Mfko51MkRDAkCacrxPn7A1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/category/16338878694302.jpg/elVfizlT5gnjI4p880f8zguNb2oaOv5OQCPAvlRr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/customers/16346463907412.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/pages/emp/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/backend/assets/js/pages/crud/forms/editors/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/assets/js/pages/crud/forms/editors/summernote.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Auth/Auth.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Auth/Auth.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Auth/Logout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Auth/Logout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/category/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/category/Add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/category/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/category/Edit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/category/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/category/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/AddEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/AddEmployee.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/employee/EditEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/employee/EditEmployee.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/uploadfile/UploadFile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/uploadfile/UploadFile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/helpers/Token.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/helpers/Token.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routers/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routers/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +245,25 @@
       <workItem from="1630339520691" duration="1163000" />
       <workItem from="1630350518507" duration="178000" />
       <workItem from="1632235500868" duration="862000" />
-      <workItem from="1632236633071" duration="3920000" />
+      <workItem from="1632236633071" duration="4781000" />
+      <workItem from="1632246423807" duration="816000" />
+      <workItem from="1632602938266" duration="147000" />
+      <workItem from="1632657927737" duration="6375000" />
+      <workItem from="1632712219258" duration="2511000" />
+      <workItem from="1633870597558" duration="21211000" />
+      <workItem from="1633896466722" duration="131000" />
+      <workItem from="1635485816499" duration="12562000" />
+      <workItem from="1635503897065" duration="206000" />
+      <workItem from="1635504143774" duration="10860000" />
+      <workItem from="1635692636812" duration="9887000" />
+      <workItem from="1635781443878" duration="5204000" />
+      <workItem from="1635865381303" duration="7029000" />
+      <workItem from="1635950217770" duration="1061000" />
+      <workItem from="1636640520051" duration="7504000" />
+      <workItem from="1637157828960" duration="3467000" />
+      <workItem from="1644340562192" duration="5959000" />
+      <workItem from="1644517662537" duration="620000" />
+      <workItem from="1644678387145" duration="1154000" />
     </task>
     <servers />
   </component>

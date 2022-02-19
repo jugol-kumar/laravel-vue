@@ -57,6 +57,7 @@ export default {
             }
             console.log(this.attachments);
         },
+        
         uploadFile(){
 
             for(let i=0; i<this.attachments.length;i++){
@@ -84,6 +85,7 @@ export default {
         uploadSingleFile(){
 
             const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
             axios.post('api/upload-single',this.form, config).then(response=>{
                 console.log(response);
             })

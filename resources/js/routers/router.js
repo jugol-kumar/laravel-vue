@@ -50,6 +50,8 @@ import FileUpload from '../components/pages/uploadfile/UploadFile';
 
 import Dropzone from '../components/pages/media/Dropzone';
 
+import Emp from '../components/pages/emp/index';
+
 
 export default new VueRouter({
     mode:'history',
@@ -249,6 +251,14 @@ export default new VueRouter({
             path:'/upload-multiple-file',
             name:'LiveUpload',
             component: FileUpload
+        },
+
+
+        //emp routes
+        {
+          path:'/emp',
+          name:'Emp',
+          component: Emp
         },
 
 

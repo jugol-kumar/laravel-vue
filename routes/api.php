@@ -29,11 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'auth',
 ], function (){
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
-    Route::post('payload', [AuthController::class, 'payload']);
+    Route::post('login',    [AuthController::class, 'login']);
+    Route::post('logout',   [AuthController::class, 'logout']);
+    Route::post('refresh',  [AuthController::class, 'refresh']);
+    Route::post('me',       [AuthController::class, 'me']);
+    Route::post('payload',  [AuthController::class, 'payload']);
     Route::post('register', [AuthController::class, 'register']);
 
 });
@@ -69,10 +69,13 @@ Route::get('/all-month',                        [MonthController::class, 'index'
 Route::get('/employee-salary/{id}',             [MonthController::class, 'employeeSalary']);
 Route::get('/product-by-category-id/{id}',      [ProductController::class, 'productByCategory']);
 
+Route::post('/category/update', [CategoryController::class, 'updateCategory']);
 
 
 Route::post('/upload',function(Request $request){
+
     $uploadedFiles=$request->pics;
+
     foreach ($uploadedFiles as $file){
         $file->store('dummy');
 
@@ -89,3 +92,7 @@ Route::post('/upload-single',function(Request $request){
     $files->store('single');
     return response(['status'=>'success'],200);
 });
+
+
+
+Route::post('save/emp', [EmployeeController::class, 'saveEmp']);
